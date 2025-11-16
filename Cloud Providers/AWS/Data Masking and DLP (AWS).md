@@ -1,6 +1,8 @@
 # Data Masking and DLP (AWS)
 
-This module demonstrates how to implement basic data masking and encryption controls in AWS using Lambda, DynamoDB, and KMS.
+This module demonstrates how to implement basic data masking and encryption controls in AWS using Lambda, DynamoDB, and KMS. These examples support ISO 27001 Annex A controls for data protection and secure processing.
+
+---
 
 ## 1. Update Lambda Function for Data Masking
 
@@ -10,11 +12,8 @@ aws lambda update-function-code \
   --zip-file fileb://masking-function.zip
 
 2. Enable DynamoDB Encryption with KMS
-
-```bash
 aws dynamodb update-table \
   --table-name sensitive-table \
   --sse-specification Enabled=true,SSEType=KMS,KMSMasterKeyId=KEY-ID
 
 yaml
-
