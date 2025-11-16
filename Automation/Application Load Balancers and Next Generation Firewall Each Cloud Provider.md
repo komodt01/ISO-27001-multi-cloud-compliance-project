@@ -1,5 +1,3 @@
-NultiCloud
-
 # 🟧 AWS — Network Load Balancer + NGFW EC2 Instances
 
 ## 1. Create a Network Load Balancer
