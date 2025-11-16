@@ -1,17 +1,40 @@
-# Data Masking and DLP (Google Cloud)
+# Google Cloud DLP – Inspection Templates & Jobs
 
-This module demonstrates how to apply data masking and de-identification using Google Cloud DLP.  
-Commands below create a masking template that supports ISO 27001 Annex A controls for data protection.
+This module demonstrates how to create a DLP inspection template and run a DLP inspection job across Cloud Storage using the Google Cloud CLI.
 
-## 1. Create a De-Identification Template
+---
+
+## 1. Create a DLP Inspection Template
 
 ~~~bash
-gcloud dlp templates create \
-  --location=global \
-  --deidentify-template-name=projects/PROJECT-ID/locations/global/deidentifyTemplates/mask-pii-template \
-  --template-id=mask-pii-template \
-  --display-name="Mask PII Template" \
-  --description="Template to mask PII data" \
-  --deidentify-config-info-type-transformations-transformations-info-types=US_SOCIAL_SECURITY_NUMBER \
-  --deidentify-config-info-type-transformations-transformations-primitive-transformation-character-mask-masking-character="#"
+gcloud dlp inspection-templates create \
+    --location=global \
+    --template-id=sensitive-data-template \
+    --display-name="Sensitive Data Template" \
+    --description="Template to identify PII and sensitive data" \
+    --info-types=CREDIT_CARD_NUMBER,PHONE_NUMBER,EMAIL_ADDRESS,US_SOCIAL_SECURITY_NUMBER
+~~~
+
+---
+
+## 2. Create a DLP Inspection Job
+
+The job scans a Cloud Storage bucket and stores findings in BigQuery.
+
+Replace:
+
+- `PROJECT-ID`
+- `BUCKET-NAME`
+
+before running.
+
+~~~bash
+gcloud dlp jobs create inspect \
+    --project=PROJECT-ID \
+    --location=global \
+    --inspect-template-name=projects/PROJECT-ID/locations/global/inspectTemplates/sensitive-data-template \
+    --storage-config-file-set-url="gs://BUCKET-NAME/*" \
+    --action-save-findings-output-table-project=PROJECT-ID \
+    --action-save-findings-output-table-dataset=dlp_findings \
+    --action-save-findings-output-table-table=findings
 ~~~
