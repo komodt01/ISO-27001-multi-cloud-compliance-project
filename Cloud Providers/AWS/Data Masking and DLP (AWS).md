@@ -12,3 +12,8 @@ Before running the update command, ensure the Lambda function exists (either fro
 aws lambda update-function-code \
   --function-name DataMaskingFunction \
   --zip-file fileb://masking-function.zip
+---
+
+## 2. Aws dynamodb update-table \
+  --table-name sensitive-table \
+  --sse-specification Enabled=true,SSEType=KMS,KMSMasterKeyId=KEY-ID
