@@ -10,6 +10,11 @@ aws lambda update-function-code \
   --zip-file fileb://masking-function.zip
 
 2. Enable DynamoDB Encryption with KMS
+
+```bash
 aws dynamodb update-table \
   --table-name sensitive-table \
   --sse-specification Enabled=true,SSEType=KMS,KMSMasterKeyId=KEY-ID
+
+yaml
+
