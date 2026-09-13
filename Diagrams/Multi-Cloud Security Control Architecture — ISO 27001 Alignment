@@ -1,0 +1,28 @@
+                    Business / Regulatory Requirements
+                              ISO 27001
+                                  │
+                                  ▼
+                   Multi-Cloud Security Architecture
+                                  │
+             ┌────────────────────┼────────────────────┐
+             │                    │                    │
+            AWS                 Azure                 GCP
+             │                    │                    │
+             └────────────────────┼────────────────────┘
+                                  │
+          ┌───────────────────────┼────────────────────────┐
+          │                       │                        │
+     Identity & Access       Network Security       Data Protection
+          │                       │                        │
+          ├───────────────────────┼────────────────────────┤
+          │                       │                        │
+     Logging & Monitoring   Configuration &          Resilience
+                             Governance
+          │                       │                        │
+          └───────────────────────┼────────────────────────┘
+                                  │
+                                  ▼
+                     Evidence / Risk / Exceptions
+                                  │
+                                  ▼
+                    ISMS / Compliance Assessment
