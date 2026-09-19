@@ -299,7 +299,6 @@ This project therefore uses capability-based alignment rather than claiming that
 | `Comparisons/`         | Cross-cloud security capability comparison and architecture analysis                |
 | `Docs/`                | Business requirements and supporting architecture documentation                     |
 | `Security_Monitoring/` | Cloud-native logging/detection examples and multi-cloud SIEM/SOAR architecture      |
-| `Automation/`          | Supporting configuration and automation examples                                    |
 
 ---
 
